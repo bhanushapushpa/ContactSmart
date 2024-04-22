@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{User/base::layout(~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>User Data</title>
+</head>
+
+<body>
+	<section>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card mt-3">
+
+						<h1 class="text-center">Update Contact</h1>
+
+						<form th:action="@{/user/process-update}" class="formController" th:object="${contact}"
+							method="post" enctype="multipart/form-data">
+
+							<!--ID-->
+							
+							<div class="mb-3">
+								<input type="hidden"  th:value="${contact.contact_Id}" name="contact_Id"
+									th:field="*{contact_Id}" class="form-control" id="name" placeholder="Enter Name">
+							</div>
+
+							<!--Name-->
+							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="error"></span>
+							<div class="mb-3">
+								<input type="text" th:value="${contact.name}" name="name"
+									th:field="*{name}" class="form-control" id="name" placeholder="Enter Name">
+							</div>
+
+
+
+							<!--Second Name-->
+							<span th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}" class="error"></span>
+							<div class="mb-3">
+								<input type="text" th:value="${contact.nickName}" name="nickName" th:field="*{nickName}"
+									class="form-control" id="secondname" placeholder="Enter Seccond Name">
+							</div>
+
+
+
+							<!--Work-->
+							<span th:if="${#fields.hasErrors('work')}" th:errors="*{work}" class="error"></span>
+							<div class="mb-3">
+								<input type="text" th:value="${contact.work}" name="work" th:field="*{work}"
+									class="form-control" id="work" placeholder="Enter Work">
+							</div>
+
+
+
+
+							<!--Email-->
+							<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+							<div class="mb-3">
+								<input type="email" th:value="${contact.email}" name="email" th:field="*{email}"
+									class="form-control" id="email" placeholder="name@example.com">
+							</div>
+
+
+
+							<!--Phone number-->
+							<span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+								class="error"></span>
+							<div class="mb-3">
+								<input type="number" th:value="${contact.phoneNumber}" name="phoneNumber"
+									th:field="*{phoneNumber}" class="form-control" id="phone" placeholder="1234567890">
+							</div>
+
+
+
+							<!--	Image-->
+							<div class="container text-center">
+								<img style="width: 150px; height: 150px;" class="profile_dashbord"
+									th:src="@{'/image/'+${contact.image}}" alt="Profile Photo">
+							</div>
+							<p>Choose New Profile pic</p>
+							<div class="mb-3">
+								<input name="profileImage" class="form-control" type="file" id="formFile">
+							</div>
+
+
+
+
+							<!--Description-->
+							<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+								class="error"></span>
+							<div class="mb-3">
+								<textarea class="form-control" th:text="${contact.description}" name="description"
+									th:field="*{description}" placeholder="Description" id="desciption"
+									rows="2"></textarea>
+							</div>
+
+
+
+							<!--Submit Button-->
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</section>
+</body>
+
+</html>

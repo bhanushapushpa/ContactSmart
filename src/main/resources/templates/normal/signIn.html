@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base :: layout(~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>SigIn</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3 mt-5 ">
+
+					<form class="form-check pb-2" th:action="@{/login}" method="post">
+						<div class="text-center mb-4">
+							<h1 class="h3 mb-3 font-weight-normal">Login</h1>
+						</div>
+						<div th:if="${param.error}" class="alert alert-danger">
+							Invalid Username and Password
+						</div>
+						
+						<div th:if="${param.Logout}" class="alert alert-success">
+							you have been logged out
+						</div>
+						
+						<div class="mb-5">
+						<div class="form-group">
+							<label for="inputEmail">Email address</label>
+							<input type="text" name="username" id="inputEmail" class="form-control" placeholder="Email address"
+								 autofocus>
+							
+						</div>
+
+						<div class="form-group">
+							<label for="inputPassword">Password</label>
+							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+								>							
+						</div>
+
+						<div class="form-group checkbox mb-3">
+							<label>
+								<input type="checkbox" value="remember-me"> Remember me
+							</label>
+						</div>
+						<div class="text-center">
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
